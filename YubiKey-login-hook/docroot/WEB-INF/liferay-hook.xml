@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!DOCTYPE hook PUBLIC "-//Liferay//DTD Hook 6.1.0//EN" "http://www.liferay.com/dtd/liferay-hook_6_1_0.dtd">
+
+<hook>
+	<portal-properties>portal.properties</portal-properties>
+	<language-properties>content/Language.properties</language-properties>
+	<custom-jsp-dir>/custom_jsps</custom-jsp-dir>
+	
+	
+	<struts-action>
+		<struts-action-path>/login/yubikey</struts-action-path>
+		<struts-action-impl>com.liferay.yubikey.login.YubiKeyForm</struts-action-impl>
+	</struts-action>
+	<struts-action>
+		<struts-action-path>/login/yubikey_auth</struts-action-path>
+		<struts-action-impl>com.liferay.yubikey.login.YubiKeyClientIdOTP</struts-action-impl>
+	</struts-action>
+</hook>
