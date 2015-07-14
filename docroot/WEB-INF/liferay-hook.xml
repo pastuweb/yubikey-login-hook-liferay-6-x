@@ -6,13 +6,14 @@
 	<language-properties>content/Language.properties</language-properties>
 	<custom-jsp-dir>/custom_jsps</custom-jsp-dir>
 	
+	<struts-action>
+		<struts-action-path>/login/yubikey_form</struts-action-path>
+		<struts-action-impl>com.liferay.yubikey.login.YubiKeyForm</struts-action-impl>
+	</struts-action>
 	
 	<struts-action>
 		<struts-action-path>/login/yubikey</struts-action-path>
-		<struts-action-impl>com.liferay.yubikey.login.YubiKeyForm</struts-action-impl>
+		<struts-action-impl>com.liferay.yubikey.login.YubiKey</struts-action-impl>
 	</struts-action>
-	<struts-action>
-		<struts-action-path>/login/yubikey_auth</struts-action-path>
-		<struts-action-impl>com.liferay.yubikey.login.YubiKeyClientIdOTP</struts-action-impl>
-	</struts-action>
+
 </hook>

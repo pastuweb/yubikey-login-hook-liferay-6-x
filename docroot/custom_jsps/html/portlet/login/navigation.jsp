@@ -56,7 +56,7 @@ if (!strutsAction.equals("/login/open_id") && OpenIdUtil.isEnabled(company.getCo
 
 boolean yubikeyAuthEnabled = PrefsPropsUtil.getBoolean(company.getCompanyId(), _YUBIKEY_AUTH_ENABLED_KEY, _YUBIKEY_AUTH_ENABLED_VALUE);
 boolean showYubiKeyIcon = false;
-if (!strutsAction.equals("/login/yubikey") && yubikeyAuthEnabled) {
+if (!strutsAction.equals("/login/yubikey_form") && yubikeyAuthEnabled) {
 	showYubiKeyIcon = true;
 }
 
@@ -65,6 +65,7 @@ boolean showSignInIcon = false;
 if (Validator.isNotNull(strutsAction) && !strutsAction.equals("/login/login")) {
 	showSignInIcon = true;
 }
+
 %>
 
 
@@ -137,16 +138,17 @@ if (Validator.isNotNull(strutsAction) && !strutsAction.equals("/login/login")) {
 			</c:if>
 			
 			<c:if test="<%= showYubiKeyIcon %>">
-				<portlet:renderURL var="yubiKeyURL">
-					<portlet:param name="struts_action" value="/login/yubikey" />
+				<portlet:renderURL var="yubikeyAuthURL">
+					<portlet:param name="struts_action" value="/login/yubikey_form" />
 				</portlet:renderURL>
-
+				
 				<liferay-ui:icon
 					message="yubi-key"
-					src='/html/portlet/login/yubikey.png'
-					url="<%= yubiKeyURL %>"
+					src='/html/portlet/login/yubikey.png' 
+					url="<%= yubikeyAuthURL %>"
 				/>
 			</c:if>
+
 
 			<c:if test="<%= showCreateAccountIcon %>">
 				<liferay-ui:icon

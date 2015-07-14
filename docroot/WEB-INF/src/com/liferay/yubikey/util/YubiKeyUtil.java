@@ -9,7 +9,6 @@ public class YubiKeyUtil {
 		if (PrefsPropsUtil.getBoolean(
 				companyId, PropsKeys.YUBIKEY_AUTH_ENABLED,
 				PropsValues.YUBIKEY_AUTH_ENABLED)) {
-
 			return true;
 		}
 		else {

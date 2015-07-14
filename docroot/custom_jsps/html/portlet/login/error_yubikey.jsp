@@ -22,23 +22,11 @@
 	<portlet:param name="struts_action" value="/login/yubikey" />
 </portlet:actionURL>
 
-
-<div style="padding:10px;">
-<aui:form action="<%= yubiKeyURL %>" method="post" name="fm">
-	
-	<aui:fieldset>
-		<aui:input cssClass="yubikey" name="email_portal" type="text" value="" size="50" inlineField="true"/>
-		<img src="/html/portlet/login/email_signin.png" alt="Email for portal" title="Email for portal" style="width:35px;"/>
-		<br>
-		<aui:input cssClass="yubikey" name="yubikey_otp" type="password" value="" size="50" inlineField="true"/>
-		<img src="/html/portlet/login/yubikey_signin.png" alt="YubiKey OTP" title="YubiKey OTP" style="width:35px;"/>
-
-		<aui:button-row>
-			<aui:button type="submit" value="sign-in" />
-		</aui:button-row>
-	</aui:fieldset>
-</aui:form>
+<br>
+<div class="portlet-msg-error">
+YubiKey OTP not accepted. Check it with Yubico Personalizzation Tool.  
 </div>
+<br>
 
 <liferay-util:include page="/html/portlet/login/navigation.jsp" />
 
