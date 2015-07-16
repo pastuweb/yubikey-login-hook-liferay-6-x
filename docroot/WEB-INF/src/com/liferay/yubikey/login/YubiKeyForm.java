@@ -1,7 +1,5 @@
 package com.liferay.yubikey.login;
 
-import java.net.URL;
-
 import javax.portlet.ActionRequest;
 import javax.portlet.ActionResponse;
 import javax.portlet.PortletConfig;
@@ -14,8 +12,6 @@ import com.liferay.portal.kernel.struts.BaseStrutsPortletAction;
 import com.liferay.portal.kernel.struts.StrutsPortletAction;
 import com.liferay.portal.kernel.util.WebKeys;
 import com.liferay.portal.theme.ThemeDisplay;
-
-import com.liferay.yubikey.util.HTTPUtil;
 
 public class YubiKeyForm extends BaseStrutsPortletAction {
 

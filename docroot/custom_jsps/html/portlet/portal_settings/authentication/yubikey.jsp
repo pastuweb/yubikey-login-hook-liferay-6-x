@@ -18,6 +18,7 @@
 
 <%
 boolean yubikeyAuthEnabled = PrefsPropsUtil.getBoolean(company.getCompanyId(), _YUBIKEY_AUTH_ENABLED_KEY, _YUBIKEY_AUTH_ENABLED_VALUE);
+boolean yubikeyAuthPwdPortal = PrefsPropsUtil.getBoolean(company.getCompanyId(), _YUBIKEY_AUTH_PWD_PORTAL_KEY, _YUBIKEY_AUTH_PWD_PORTAL_VALUE);
 Integer yubikeyAuthClientId = PrefsPropsUtil.getInteger(company.getCompanyId(), _YUBIKEY_AUTH_CLIENTID_KEY, _YUBIKEY_AUTH_CLIENTID_VALUE);
 String yubikeyAuthSecretKey = PrefsPropsUtil.getString(company.getCompanyId(), _YUBIKEY_AUTH_SECRETKEY_KEY , _YUBIKEY_AUTH_SECRETKEY_VALUE);
 
@@ -25,6 +26,7 @@ String yubikeyAuthSecretKey = PrefsPropsUtil.getString(company.getCompanyId(), _
 
 <aui:fieldset>
 	<aui:input label="enabled" name='<%= "settings--" + _YUBIKEY_AUTH_ENABLED_KEY + "--" %>' type="checkbox" value="<%= yubikeyAuthEnabled %>" />
+	<aui:input label="password_portal" name='<%= "settings--" + _YUBIKEY_AUTH_PWD_PORTAL_KEY + "--" %>' type="checkbox" value="<%= yubikeyAuthPwdPortal %>" />
 	<aui:input label="client-id" name='<%= "settings--" + _YUBIKEY_AUTH_CLIENTID_KEY + "--" %>' type="text" value="<%= yubikeyAuthClientId %>" />
 	<aui:input label="secret-key-api" name='<%= "settings--" + _YUBIKEY_AUTH_SECRETKEY_KEY + "--" %>' type="text" value="<%= yubikeyAuthSecretKey %>" size="50"/>
 </aui:fieldset>
@@ -32,6 +34,8 @@ String yubikeyAuthSecretKey = PrefsPropsUtil.getString(company.getCompanyId(), _
 <%!
 private static final String _YUBIKEY_AUTH_ENABLED_KEY = "yubikey.auth.enabled";
 private static final boolean _YUBIKEY_AUTH_ENABLED_VALUE = GetterUtil.getBoolean(PropsUtil.get(_YUBIKEY_AUTH_ENABLED_KEY));
+private static final String _YUBIKEY_AUTH_PWD_PORTAL_KEY = "yubikey.auth.pwd.portal";
+private static final boolean _YUBIKEY_AUTH_PWD_PORTAL_VALUE = GetterUtil.getBoolean(PropsUtil.get(_YUBIKEY_AUTH_PWD_PORTAL_KEY));
 private static final String _YUBIKEY_AUTH_CLIENTID_KEY = "yubikey.auth.clientid";
 private static final Integer _YUBIKEY_AUTH_CLIENTID_VALUE = GetterUtil.getInteger(PropsUtil.get(_YUBIKEY_AUTH_CLIENTID_KEY));
 private static final String _YUBIKEY_AUTH_SECRETKEY_KEY = "yubikey.auth.secretkey";
