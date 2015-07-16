@@ -16,23 +16,46 @@
 
 
 <%@ include file="/html/portlet/login/init.jsp" %>
+<%!
+private static final String _YUBIKEY_AUTH_PWD_PORTAL_KEY = "yubikey.auth.pwd.portal";
+private static final boolean _YUBIKEY_AUTH_PWD_PORTAL_VALUE = GetterUtil.getBoolean(PropsUtil.get(_YUBIKEY_AUTH_PWD_PORTAL_KEY));
+%>
 
 
 <portlet:actionURL var="yubiKeyURL">
 	<portlet:param name="struts_action" value="/login/yubikey" />
 </portlet:actionURL>
 
-
 <div style="padding:10px;">
 <aui:form action="<%= yubiKeyURL %>" method="post" name="fm">
 	
+	
 	<aui:fieldset>
-		<aui:input cssClass="yubikey" name="email_portal" type="text" value="" size="50" inlineField="true"/>
-		<img src="/html/portlet/login/email_signin.png" alt="Email for portal" title="Email for portal" style="width:35px;"/>
+		<aui:input cssClass="yubikey" name="email_portal" type="text" value="" size="40" inlineField="true"/>
+		<img src="/html/portlet/login/email_signin.png" alt="Email for portal" title="Email for Portal" style="width:35px;"/>
 		<br>
-		<aui:input cssClass="yubikey" name="yubikey_otp" type="password" value="" size="50" inlineField="true"/>
+		<%
+		boolean yubikeyAuthPwdPortalEnabled = PrefsPropsUtil.getBoolean(company.getCompanyId(), _YUBIKEY_AUTH_PWD_PORTAL_KEY, _YUBIKEY_AUTH_PWD_PORTAL_VALUE);
+		if(yubikeyAuthPwdPortalEnabled){ %>
+		<aui:input cssClass="yubikey" name="password_portal" type="password" value="" size="40" inlineField="true"/>
+		<img src="/html/portlet/login/password_signin.png" alt="Password for portal" title="Password for Portal" style="width:35px;"/>
+		<div class="portlet-msg-info">
+			If you are a NEW user, you will register with <span style="color:#0019ff;">username="first part of email address"</span> and <span style="color:#0019ff;">password="Password for Portal"</span>.<br>
+			If you are ALREADY REGISTERED in the portal and you will digit e new OTP Key, your PublicId/DeviceId will be overwritten (but only if it is not already associated with some other account).
+		</div>
+		<%}else{ %>
+		<div class="portlet-msg-info">
+			If you are a NEW user, you will register with <span style="color:#0019ff;">username="first part of email address"</span> and <span style="color:#0019ff;">password="YubiKey PubblicId/DeviceId"</span>.<br>
+			If you are ALREADY REGISTERED in the portal and you will digit e new OTP Key, your PublicId/DeviceId will be overwritten (but only if it is not already associated with some other account).
+		</div>
+		<%} %>
+		<br>
+		<aui:input cssClass="yubikey" name="yubikey_otp" type="password" value="" size="40" inlineField="true"/>
 		<img src="/html/portlet/login/yubikey_signin.png" alt="YubiKey OTP" title="YubiKey OTP" style="width:35px;"/>
-
+		<br>
+		<div class="portlet-msg-alert">
+			EACH USER will be a <span style="color:#0019ff;">special field with YubiKey PublicId/DeviceId</span> in this way <span style="color:#0019ff;">for each user will be accepted only one OTP YubiKey</span>.
+		</div>
 		<aui:button-row>
 			<aui:button type="submit" value="sign-in" />
 		</aui:button-row>

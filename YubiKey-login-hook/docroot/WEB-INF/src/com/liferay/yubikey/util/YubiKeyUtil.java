@@ -15,4 +15,15 @@ public class YubiKeyUtil {
 			return false;
 		}
 	}
+	
+	public static boolean isPwdPortalEnabled(long companyId) throws SystemException {
+		if (PrefsPropsUtil.getBoolean(
+				companyId, PropsKeys.YUBIKEY_AUTH_PWD_PORTAL,
+				PropsValues.YUBIKEY_AUTH_PWD_PORTAL)) {
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
 }

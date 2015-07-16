@@ -15,16 +15,12 @@
 --%>
 
 
+
 <%@ include file="/html/portlet/login/init.jsp" %>
-
-
-<portlet:actionURL var="yubiKeyURL">
-	<portlet:param name="struts_action" value="/login/yubikey" />
-</portlet:actionURL>
 
 <br>
 <div class="portlet-msg-error">
-YubiKey OTP not accepted. Check it with Yubico Personalizzation Tool.  
+<span style="color:#FF0000;">User Account issues.</span> Check email and password if required.  
 </div>
 <br>
 
