@@ -245,6 +245,7 @@ public class YubiKey extends BaseStrutsPortletAction {
 						}
 					}	
 				}else{
+					logger.info("user already registered in the portal but he is not a DeviceId associated.");
 					user.setComments("#YubiKeyDeviceId:"+YubiKeyDeviceId+"#");
 					UserLocalServiceUtil.updateUser(user);
 	   				logger.info("YubiKeyDeviceId="+user.getComments());

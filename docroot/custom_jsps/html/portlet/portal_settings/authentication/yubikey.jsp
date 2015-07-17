@@ -30,8 +30,10 @@ String yubikeyAuthSecretKey = PrefsPropsUtil.getString(company.getCompanyId(), _
 	<aui:input label="enabled" name='<%= "settings--" + _YUBIKEY_AUTH_ENABLED_KEY + "--" %>' type="checkbox" value="<%= yubikeyAuthEnabled %>" />
 	<aui:input label="password_portal" name='<%= "settings--" + _YUBIKEY_AUTH_PWD_PORTAL_KEY + "--" %>' type="checkbox" value="<%= yubikeyAuthPwdPortal %>" />
 	<aui:input label="auto_register" name='<%= "settings--" + _YUBIKEY_AUTH_AUTO_REGISTER_KEY + "--" %>' type="checkbox" value="<%= yubikeyAuthAutoRegister %>" />
-	<aui:input label="auto_update_deviceid" name='<%= "settings--" + _YUBIKEY_AUTH_AUTO_UPDATE_DEVICEID_KEY + "--" %>' type="checkbox" value="<%= yubikeyAuthAutoUpdateDeviceId %>" />
-	
+	<aui:input label="auto_update_deviceid" name='<%= "settings--" + _YUBIKEY_AUTH_AUTO_UPDATE_DEVICEID_KEY + "--" %>' type="checkbox" value="<%= yubikeyAuthAutoUpdateDeviceId %>" /><br>
+	<div class="portlet-msg-alert">
+		Updating DeviceId can only authenticate using email + password + OTP. Otherwise there could be a safety issue.
+	</div>
 	<aui:input label="client-id" name='<%= "settings--" + _YUBIKEY_AUTH_CLIENTID_KEY + "--" %>' type="text" value="<%= yubikeyAuthClientId %>" />
 	<aui:input label="secret-key-api" name='<%= "settings--" + _YUBIKEY_AUTH_SECRETKEY_KEY + "--" %>' type="text" value="<%= yubikeyAuthSecretKey %>" size="50"/>
 </aui:fieldset>
