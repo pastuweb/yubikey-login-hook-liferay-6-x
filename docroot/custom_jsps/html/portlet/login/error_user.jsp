@@ -20,7 +20,8 @@
 
 <br>
 <div class="portlet-msg-error">
-<span style="color:#FF0000;">User Account issues.</span> Check email and password if required.  
+<span style="color:#FF0000;">User Account issues.</span> Check email and password(if required) or <span style="color:#FF0000;">the platform can not auto-register your account because the feature has been disabled</span>.<br>
+Contact the administrator for more information.  
 </div>
 <br>
 

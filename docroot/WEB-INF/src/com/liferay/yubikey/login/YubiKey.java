@@ -68,7 +68,7 @@ public class YubiKey extends BaseStrutsPortletAction {
 				boolean isValidUser = validateUser(themeDisplay.getCompanyId(), username, email_portal, password_portal, actionRequest, deviceId);
 				if(isValidUser){
 					//check deviceId
-					if(validateDeviceId(UserLocalServiceUtil.getUserByEmailAddress(themeDisplay.getCompanyId(), email_portal), deviceId)){
+					if(validateDeviceId(UserLocalServiceUtil.getUserByEmailAddress(themeDisplay.getCompanyId(), email_portal), deviceId, themeDisplay.getCompanyId())){
 						actionResponse.sendRedirect(themeDisplay.getCDNBaseURL()+"?email_portal="+email_portal+"&company_id="+themeDisplay.getCompanyId());
 					}else{
 						actionResponse.setRenderParameter("struts_action", "/login/yubikey"); 
@@ -178,17 +178,22 @@ public class YubiKey extends BaseStrutsPortletAction {
 				
 			} catch (PortalException e) {
 				logger.warn(e.getMessage());
-				logger.info("user NOT EXIST, will be created with this data:");		       	
-		       	String pwd = deviceId;
-		       	if(password_portal != null && !password_portal.isEmpty()){
-		       		pwd = password_portal;
-		       	}
-		       	logger.info("username="+username+ " email="+email_portal);
-		       	//before to create user, i have to check if already exist a user with this deviceId
-		       	if(isNewDeviceId(deviceId)){
-		       		addUserLiferay(username, email_portal, pwd, actionRequest, company_id, deviceId);
-		       		return true;
-		       	}
+				logger.info("user NOT EXIST");
+				if(YubiKeyUtil.isAutoRegisterEnabled(company_id)){
+					logger.info("will be created with this data:");		       	
+			       	String pwd = deviceId;
+			       	if(password_portal != null && !password_portal.isEmpty()){
+			       		pwd = password_portal;
+			       	}
+			       	logger.info("username="+username+ " email="+email_portal);
+			       	//before to create user, i have to check if already exist a user with this deviceId
+			       	if(isNewDeviceId(deviceId)){
+			       		addUserLiferay(username, email_portal, pwd, actionRequest, company_id, deviceId);
+			       		return true;
+			       	}
+				}else{
+					return false;	
+				}
 		       	
 			} catch (SystemException e) {
 				e.printStackTrace();
@@ -210,7 +215,7 @@ public class YubiKey extends BaseStrutsPortletAction {
 	    	return true;
 	    }
 	    
-	    private static boolean validateDeviceId(User user, String YubiKeyDeviceId){
+	    private static boolean validateDeviceId(User user, String YubiKeyDeviceId, long companyId){
 	    	
 	    	try {
 				if(user.getComments() != null && !user.getComments().isEmpty()){
@@ -224,14 +229,18 @@ public class YubiKey extends BaseStrutsPortletAction {
 						logger.info("YubiKeyDeviceId VALID");
 						return true;
 					}else{
-						logger.info("YubiKeyDeviceId VALID but NOT MATCH, but the user is OK, so maybe he has another OTP Key");
-						//check YubiKeyDeviceId
-						if(isNewDeviceId(YubiKeyDeviceId)){
-							user.setComments("#YubiKeyDeviceId:"+YubiKeyDeviceId+"#");
-							UserLocalServiceUtil.updateUser(user);
-							return true;
+						if(YubiKeyUtil.isAutoUpdateDeviceIdEnabled(companyId) && YubiKeyUtil.isPwdPortalEnabled(companyId)){
+							logger.info("YubiKeyDeviceId VALID but NOT MATCH, but the user is OK, so maybe he has another OTP Key");
+							//check YubiKeyDeviceId
+							if(isNewDeviceId(YubiKeyDeviceId)){
+								user.setComments("#YubiKeyDeviceId:"+YubiKeyDeviceId+"#");
+								UserLocalServiceUtil.updateUser(user);
+								return true;
+							}else{
+								logger.info("YubiKeyDeviceId already associated to another account.");
+								return false;
+							}
 						}else{
-							logger.info("YubiKeyDeviceId already associated to another account.");
 							return false;
 						}
 					}	

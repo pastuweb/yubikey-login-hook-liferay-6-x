@@ -41,12 +41,10 @@ private static final boolean _YUBIKEY_AUTH_PWD_PORTAL_VALUE = GetterUtil.getBool
 		<img src="/html/portlet/login/password_signin.png" alt="Password for portal" title="Password for Portal" style="width:35px;"/>
 		<div class="portlet-msg-info">
 			If you are a NEW user, you will register with <span style="color:#0019ff;">username="first part of email address"</span> and <span style="color:#0019ff;">password="Password for Portal"</span>.<br>
-			If you are ALREADY REGISTERED in the portal and you will digit e new OTP Key, your PublicId/DeviceId will be overwritten (but only if it is not already associated with some other account).
 		</div>
 		<%}else{ %>
 		<div class="portlet-msg-info">
 			If you are a NEW user, you will register with <span style="color:#0019ff;">username="first part of email address"</span> and <span style="color:#0019ff;">password="YubiKey PubblicId/DeviceId"</span>.<br>
-			If you are ALREADY REGISTERED in the portal and you will digit e new OTP Key, your PublicId/DeviceId will be overwritten (but only if it is not already associated with some other account).
 		</div>
 		<%} %>
 		<br>
@@ -54,7 +52,9 @@ private static final boolean _YUBIKEY_AUTH_PWD_PORTAL_VALUE = GetterUtil.getBool
 		<img src="/html/portlet/login/yubikey_signin.png" alt="YubiKey OTP" title="YubiKey OTP" style="width:35px;"/>
 		<br>
 		<div class="portlet-msg-alert">
-			EACH USER will be a <span style="color:#0019ff;">special field with YubiKey PublicId/DeviceId</span> in this way <span style="color:#0019ff;">for each user will be accepted only one OTP YubiKey</span>.
+			EACH USER will be a <span style="color:#0019ff;">special field with YubiKey PublicId/DeviceId</span> in this way <span style="color:#0019ff;">for each user will be accepted only one OTP YubiKey at the time</span>.<br>
+			If you use email+OTP, you can use only the last YubiKey DeviceId used in the previous access.<br>
+			If you use email+pwd+OTP, you can use any YubiKey, provided that the DeviceId/PublicKey not already been associated with a portal user.
 		</div>
 		<aui:button-row>
 			<aui:button type="submit" value="sign-in" />

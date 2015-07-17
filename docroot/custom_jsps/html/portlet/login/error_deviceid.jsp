@@ -19,7 +19,8 @@
 
 <br>
 <div class="portlet-msg-alert">
-<span style="color:#0019ff;">YubiKey OTP corrects</span> but <span style="color:#0019ff;">YubiKey PublicId/DeviceId already associated to another account</span>.  
+<span style="color:#0019ff;">YubiKey OTP corrects</span> but <span style="color:#0019ff;">YubiKey PublicId/DeviceId already associated to another account</span> or <span style="color:#0019ff;">you can not upgrade what you have been associated (only with user+password+OTP option)</span>.<br>
+Contact the administrator for more information.  
 </div>
 <br>
 
