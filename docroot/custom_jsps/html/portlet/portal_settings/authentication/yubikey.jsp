@@ -23,8 +23,8 @@ boolean yubikeyAuthAutoRegister = PrefsPropsUtil.getBoolean(company.getCompanyId
 boolean yubikeyAuthAutoUpdateDeviceId = PrefsPropsUtil.getBoolean(company.getCompanyId(), _YUBIKEY_AUTH_AUTO_UPDATE_DEVICEID_KEY, _YUBIKEY_AUTH_AUTO_UPDATE_DEVICEID_VALUE);
 Integer yubikeyAuthClientId = PrefsPropsUtil.getInteger(company.getCompanyId(), _YUBIKEY_AUTH_CLIENTID_KEY, _YUBIKEY_AUTH_CLIENTID_VALUE);
 String yubikeyAuthSecretKey = PrefsPropsUtil.getString(company.getCompanyId(), _YUBIKEY_AUTH_SECRETKEY_KEY , _YUBIKEY_AUTH_SECRETKEY_VALUE);
-
 %>
+
 
 <aui:fieldset>
 	<aui:input label="enabled" name='<%= "settings--" + _YUBIKEY_AUTH_ENABLED_KEY + "--" %>' type="checkbox" value="<%= yubikeyAuthEnabled %>" />
@@ -32,7 +32,7 @@ String yubikeyAuthSecretKey = PrefsPropsUtil.getString(company.getCompanyId(), _
 	<aui:input label="auto_register" name='<%= "settings--" + _YUBIKEY_AUTH_AUTO_REGISTER_KEY + "--" %>' type="checkbox" value="<%= yubikeyAuthAutoRegister %>" />
 	<aui:input label="auto_update_deviceid" name='<%= "settings--" + _YUBIKEY_AUTH_AUTO_UPDATE_DEVICEID_KEY + "--" %>' type="checkbox" value="<%= yubikeyAuthAutoUpdateDeviceId %>" /><br>
 	<div class="portlet-msg-alert">
-		Updating DeviceId can only authenticate using email + password + OTP. Otherwise there could be a safety issue.
+		Updating DeviceId can be only possible using email + password + OTP. Otherwise there could be a safety issue.
 	</div>
 	<aui:input label="client-id" name='<%= "settings--" + _YUBIKEY_AUTH_CLIENTID_KEY + "--" %>' type="text" value="<%= yubikeyAuthClientId %>" />
 	<aui:input label="secret-key-api" name='<%= "settings--" + _YUBIKEY_AUTH_SECRETKEY_KEY + "--" %>' type="text" value="<%= yubikeyAuthSecretKey %>" size="50"/>
