@@ -1,4 +1,8 @@
 # yubikey-login-hook-liferay-6-x
+-
+It was a project shared by Google Code Hosting Projects.
+-
+
 With this hook you can integrate a new Liferay's authentication in your portal. This hook use YubiKey OTP API by Yubico.com
 
 Through the Portal Settings you can choose email + OTP or email + password + OTP authentication way.
