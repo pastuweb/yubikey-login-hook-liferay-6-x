@@ -15,7 +15,7 @@ import com.liferay.portal.theme.ThemeDisplay;
 
 public class YubiKeyForm extends BaseStrutsPortletAction {
 
-	private final static Logger logger = Logger.getLogger(YubiKeyForm.class.getName()); 
+	private final static Logger logger = Logger.getLogger(YubiKeyForm.class); 
 
 	 public void processAction(
 	            StrutsPortletAction originalStrutsPortletAction,

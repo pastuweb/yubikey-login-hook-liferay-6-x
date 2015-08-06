@@ -41,7 +41,7 @@ import com.yubico.client.v2.exceptions.YubicoValidationFailure;
 
 public class YubiKey extends BaseStrutsPortletAction {
 
-	private final static Logger logger = Logger.getLogger(YubiKey.class.getName()); 
+	private final static Logger logger = Logger.getLogger(YubiKey.class); 
 
 	 public void processAction(
 	            StrutsPortletAction originalStrutsPortletAction,

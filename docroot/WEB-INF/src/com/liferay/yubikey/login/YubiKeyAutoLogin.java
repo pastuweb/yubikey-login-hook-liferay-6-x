@@ -14,8 +14,8 @@ import com.liferay.portal.service.UserLocalServiceUtil;
 
 
 public class YubiKeyAutoLogin implements AutoLogin {
-
-	private final static Logger logger = Logger.getLogger(YubiKeyAutoLogin.class.getName()); 
+	
+	private final static Logger logger = Logger.getLogger(YubiKeyAutoLogin.class); 
 
 	public String[] login(HttpServletRequest req, HttpServletResponse res) {
 		
